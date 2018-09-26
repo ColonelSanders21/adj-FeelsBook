@@ -41,7 +41,7 @@ public class EmotionRecord {
     //Setter method section
     public void setTimestamp(String timestamp){
         this.timestamp = timestamp;
-        //Add exception for if not proper format
+
     }
 
     public void setEmotion(String emotion){
