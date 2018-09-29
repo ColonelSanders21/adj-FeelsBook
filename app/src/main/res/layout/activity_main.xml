@@ -20,93 +20,93 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/newLove"
+        android:id="@+id/newLoveButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/love_button"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/newSurprise"
-        app:layout_constraintEnd_toStartOf="@+id/newJoy"
+        android:textSize="70sp"
+        app:layout_constraintBottom_toTopOf="@+id/newSurpriseButton"
+        app:layout_constraintEnd_toStartOf="@+id/newJoyButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/newJoy"
+        android:id="@+id/newJoyButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/joy_button"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/newAnger"
+        android:textSize="70sp"
+        app:layout_constraintBottom_toTopOf="@+id/newAngerButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/newLove"
+        app:layout_constraintStart_toEndOf="@+id/newLoveButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/newSurprise"
+        android:id="@+id/newSurpriseButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/surprise_button"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/newSadness"
-        app:layout_constraintEnd_toStartOf="@+id/newAnger"
+        android:textSize="70sp"
+        app:layout_constraintBottom_toTopOf="@+id/newSadnessButton"
+        app:layout_constraintEnd_toStartOf="@+id/newAngerButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newLove" />
+        app:layout_constraintTop_toBottomOf="@+id/newLoveButton" />
 
     <Button
-        android:id="@+id/newAnger"
+        android:id="@+id/newAngerButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/anger_button"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/newFear"
+        android:textSize="70sp"
+        app:layout_constraintBottom_toTopOf="@+id/newFearButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/newSurprise"
-        app:layout_constraintTop_toBottomOf="@+id/newJoy" />
+        app:layout_constraintStart_toEndOf="@+id/newSurpriseButton"
+        app:layout_constraintTop_toBottomOf="@+id/newJoyButton" />
 
     <Button
-        android:id="@+id/newSadness"
+        android:id="@+id/newSadnessButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/sadness_button"
-        android:textSize="32sp"
+        android:textSize="70sp"
         app:layout_constraintBottom_toTopOf="@+id/viewRecordsButton"
-        app:layout_constraintEnd_toStartOf="@+id/newFear"
+        app:layout_constraintEnd_toStartOf="@+id/newFearButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newSurprise" />
+        app:layout_constraintTop_toBottomOf="@+id/newSurpriseButton" />
 
     <Button
-        android:id="@+id/newFear"
+        android:id="@+id/newFearButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/fear_button"
-        android:textSize="32sp"
+        android:textSize="70sp"
         app:layout_constraintBottom_toTopOf="@+id/viewRecordsButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/newSadness"
-        app:layout_constraintTop_toBottomOf="@+id/newAnger" />
+        app:layout_constraintStart_toEndOf="@+id/newSadnessButton"
+        app:layout_constraintTop_toBottomOf="@+id/newAngerButton" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,58 +1,61 @@
 package ca.ualberta.cs.adj_feelsbook;
 
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class EmotionRecord {
-    //An instance of this class represents an emotion recorded with a timestamp and optional comment
-    protected String timestamp;
+public abstract class EmotionRecord implements Comparable<EmotionRecord>{
+    //Abstract class for all emotion record
+    protected Date date;
     protected String comment;
+    protected DateFormat isoFormat = new SimpleDateFormat("YYYY-MM-DD'T'HH:MM:SS");
 
-    //May remove this -- could split into emotion subclasses?
-    protected String emotion;
-
-
-    //Constructor for no comment.
-    EmotionRecord(String timestamp, String emotion){
-        this.timestamp = timestamp;
-        this.emotion = emotion;
+    EmotionRecord(){
+        //No arguments required for constructor -- comment can be set by user after instantiation
+        this.date = new Date();
         this.comment = "";
     }
 
-    //Constructor with added comment
-    EmotionRecord(String timestamp, String emotion, String comment){
-        this.timestamp = timestamp;
-        this.emotion = emotion;
-        this.comment = comment;
+    //setters
+    public void setDate(Date date){
+        this.date = date;
+    }
+    public void setComment (String comment){
+        if(comment.length() < 100){
+            this.comment = comment;
+        }
+        else{
+            //throw new CommentTooLongException();
+        }
     }
 
-    //Getter method section
-    public String getTimestamp(){
-        return this.timestamp;
+    //getters
+    public Date getDate(){
+        return this.date;
     }
-
-    public String getEmotion(){
-        return this.emotion;
-    }
-
     public String getComment(){
         return this.comment;
     }
 
-    //Setter method section
-    public void setTimestamp(String timestamp){
-        this.timestamp = timestamp;
+    @Override
+    //Ensures all other extensions of EmotionRecord have a way of expressing as string properly
+    public abstract String toString();
 
-    }
 
-    public void setEmotion(String emotion){
-        this.emotion = emotion;
-        //Add exception for unexpected emotions
-        //Implemented, but not required for assignment -- may remove later
-    }
+    //CREDIT THIS
+    // https://stackoverflow.com/questions/19682818/collections-sort-using-comparator
 
-    public void setComment(String comment){
-        this.comment = comment;
-        //Add exception for length being >100 chars
+    @Override
+    public int compareTo(EmotionRecord a){
+        if(this.date.after(a.getDate())){
+            return 1;
+        }
+        else if(this.date.equals(a.getDate())){
+            return 0;
+        }
+        else{
+            return -1;
+        }
     }
 
 }

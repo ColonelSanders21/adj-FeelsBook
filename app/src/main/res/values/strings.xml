@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">adj-FeelsBook</string>
     <string name="view_records">View Log</string>
-    <string name="love_button">😍&#10;Love</string>
-    <string name="joy_button">😊&#10;Joy</string>
-    <string name="surprise_button">😮&#10;Surprise</string>
-    <string name="anger_button">😠&#10;Anger</string>
-    <string name="sadness_button">😢&#10;Sadness</string>
-    <string name="fear_button">😨&#10;Fear</string>
+    <string name="love_button">😍</string>
+    <string name="joy_button">😊</string>
+    <string name="surprise_button">😮</string>
+    <string name="anger_button">😠</string>
+    <string name="sadness_button">😢</string>
+    <string name="fear_button">😨</string>
 </resources>
