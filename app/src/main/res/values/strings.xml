@@ -7,4 +7,6 @@
     <string name="anger_button">😠</string>
     <string name="sadness_button">😢</string>
     <string name="fear_button">😨</string>
+    <string name="comment_dialog_confirm">Add Comment</string>
+    <string name="comment_dialog_decline">Cancel</string>
 </resources>
