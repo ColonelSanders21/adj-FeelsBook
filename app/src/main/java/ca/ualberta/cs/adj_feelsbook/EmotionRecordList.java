@@ -28,6 +28,11 @@ public class EmotionRecordList {
     }
 
     //getters
+
+    public ArrayList<EmotionRecord> getEmotionRecords() {
+        return emotionRecords;
+    }
+
     public EmotionRecord getRecord(int index){
         return this.emotionRecords.get(index);
     }

@@ -9,4 +9,9 @@
     <string name="fear_button">😨</string>
     <string name="comment_dialog_confirm">Add Comment</string>
     <string name="comment_dialog_decline">Cancel</string>
+    <string name="edit_record_title">Edit Record</string>
+    <string name="delete_record">Delete</string>
+    <string name="save_record">Save</string>
+    <string name="cancel_edit_record">Cancel</string>
+
 </resources>

@@ -14,7 +14,7 @@ public class EmotionRecordListController {
         getEmotionRecordList().addRecord(emotionRecord);
     }
 
-    //For debuga and testing
+    //For debug and testing
     public int getSize(){
         return getEmotionRecordList().getSize();
     }
@@ -22,4 +22,5 @@ public class EmotionRecordListController {
     public EmotionRecord getRecord(int index){
         return getEmotionRecordList().getRecord(index);
     }
+    public int getIndex(EmotionRecord record){ return getEmotionRecordList().getEmotionRecords().indexOf(record);}
 }

@@ -49,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addNewLove(View v){
-        EmotionRecordListController listController = new EmotionRecordListController();
-        listController.addRecord(new LoveRecord());
-        //Toast.makeText(this, "Feeling of love recorded!", Toast.LENGTH_SHORT).show();
+        final EmotionRecordListController listController = new EmotionRecordListController();
+        final EmotionRecord newLove = new LoveRecord();
+        listController.addRecord(newLove);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Test");
+        builder.setTitle("Emotion Saved");
         builder.setMessage("Feeling of love saved! Add comment?");
         builder.setNegativeButton(R.string.comment_dialog_decline, new DialogInterface.OnClickListener() {
             @Override
@@ -64,10 +64,13 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton(R.string.comment_dialog_confirm, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                /* This code block would launch the edit comment window -- Is this necessary?
+                //This code block would launch the edit comment window -- Is this necessary?
                 Intent intent = new Intent(MainActivity.this, EditEmotionRecordActivity.class);
+                int index = listController.getIndex(newLove);
+                intent.putExtra("index", index);
                 startActivity(intent);
-                */
+                
+
 
             }
         });

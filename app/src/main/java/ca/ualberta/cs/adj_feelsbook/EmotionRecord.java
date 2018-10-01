@@ -41,10 +41,11 @@ public abstract class EmotionRecord implements Comparable<EmotionRecord>{
     //Ensures all other extensions of EmotionRecord have a way of expressing as string properly
     public abstract String toString();
 
+    public abstract String getEmoji();
+
 
     //CREDIT THIS
     // https://stackoverflow.com/questions/19682818/collections-sort-using-comparator
-
     @Override
     public int compareTo(EmotionRecord a){
         if(this.date.after(a.getDate())){

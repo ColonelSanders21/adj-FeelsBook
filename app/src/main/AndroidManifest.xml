@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".EmotionRecordListActivity" />
-        <activity android:name=".EditEmotionRecordActivity"></activity>
+        <activity android:name=".EditEmotionRecordActivity"/>
     </application>
 
 </manifest>
