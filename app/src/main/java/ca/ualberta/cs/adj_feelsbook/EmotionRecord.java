@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class EmotionRecord implements Comparable<EmotionRecord>{
-    //Abstract class for all emotion record
+    //Abstract class for all emotion records
     protected Date date;
     protected String comment;
     protected DateFormat isoFormat = new SimpleDateFormat("YYYY-MM-dd'T'hh:mm:ss");
@@ -20,12 +20,12 @@ public abstract class EmotionRecord implements Comparable<EmotionRecord>{
     public void setDate(Date date){
         this.date = date;
     }
-    public void setComment (String comment){
+    public void setComment (String comment) throws  CommentTooLongException{
         if(comment.length() < 100){
             this.comment = comment;
         }
         else{
-            //throw new CommentTooLongException();
+            throw new CommentTooLongException();
         }
     }
 
@@ -44,8 +44,9 @@ public abstract class EmotionRecord implements Comparable<EmotionRecord>{
     public abstract String getEmoji();
 
 
-    //CREDIT THIS
-    // https://stackoverflow.com/questions/19682818/collections-sort-using-comparator
+
+    // Credit to Paul Samsotha and ivan_pozdeev on StackOverflow for how to implement a comparable
+    // interface -- https://stackoverflow.com/a/19683102
     @Override
     public int compareTo(EmotionRecord a){
         if(this.date.after(a.getDate())){

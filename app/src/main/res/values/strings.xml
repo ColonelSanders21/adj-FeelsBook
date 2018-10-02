@@ -13,5 +13,11 @@
     <string name="delete_record">Delete</string>
     <string name="save_record">Save</string>
     <string name="cancel_edit_record">Cancel</string>
+    <string name="love_count">😍x</string>
+    <string name="joy_count">😊x</string>
+    <string name="surprise_count">😮x</string>
+    <string name="anger_count">😠x</string>
+    <string name="sadness_count">😢x</string>
+    <string name="fear_count">😨x</string>
 
 </resources>

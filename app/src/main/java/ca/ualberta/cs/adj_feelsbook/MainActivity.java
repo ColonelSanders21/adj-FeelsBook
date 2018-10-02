@@ -21,63 +21,64 @@
 
 package ca.ualberta.cs.adj_feelsbook;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
-    private EmotionRecordList emotionRecords = new EmotionRecordList();
+    EmotionRecordListController listController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        listController = new EmotionRecordListController();
     }
 
-    //CITE THIS -- large portion based on Student Picker tutorial
     public void viewLog(View v){
+        //Launches the EmotionRecordListActivity to see past emotional records
         Intent intent = new Intent(MainActivity.this, EmotionRecordListActivity.class);
         startActivity(intent);
     }
 
+
+    //These all add an emotion record of their respective classes
     public void addNewLove(View v){
-        final EmotionRecordListController listController = new EmotionRecordListController();
-        final EmotionRecord newLove = new LoveRecord();
+        EmotionRecord newLove = new LoveRecord();
         listController.addRecord(newLove);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Emotion Saved");
-        builder.setMessage("Feeling of love saved! Add comment?");
-        builder.setNegativeButton(R.string.comment_dialog_decline, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        builder.setPositiveButton(R.string.comment_dialog_confirm, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //This code block would launch the edit comment window -- Is this necessary?
-                Intent intent = new Intent(MainActivity.this, EditEmotionRecordActivity.class);
-                int index = listController.getIndex(newLove);
-                intent.putExtra("index", index);
-                startActivity(intent);
-                
-
-
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
+        Toast.makeText(this, "Love emotion saved!", Toast.LENGTH_SHORT).show();
     }
 
+    public void addNewJoy(View v){
+        EmotionRecord newJoy = new JoyRecord();
+        listController.addRecord(newJoy);
+        Toast.makeText(this, "Joy emotion saved!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void addNewSurprise(View v){
+        EmotionRecord newSurprise = new SurpriseRecord();
+        listController.addRecord(newSurprise);
+        Toast.makeText(this, "Surprise emotion saved!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void addNewAnger(View v){
+        EmotionRecord newAnger = new AngerRecord();
+        listController.addRecord(newAnger);
+        Toast.makeText(this, "Anger emotion saved!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void addNewSadness(View v){
+        EmotionRecord newSadness = new SadnessRecord();
+        listController.addRecord(newSadness);
+        Toast.makeText(this, "Sadness emotion saved!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void addNewFear(View v){
+        EmotionRecord newFear = new FearRecord();
+        listController.addRecord(newFear);
+        Toast.makeText(this, "Fear emotion saved!", Toast.LENGTH_SHORT).show();
+    }
 }

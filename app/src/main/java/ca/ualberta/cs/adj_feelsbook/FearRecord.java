@@ -5,7 +5,7 @@ public class FearRecord extends EmotionRecord {
     FearRecord(){
 
         super();
-        emoji = "\uD83D\uDE20";
+        emoji = "\uD83D\uDE28";
     }
 
     @Override

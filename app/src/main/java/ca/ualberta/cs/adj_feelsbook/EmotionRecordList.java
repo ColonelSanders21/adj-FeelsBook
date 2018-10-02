@@ -6,9 +6,6 @@ import java.util.Collections;
 
 public class EmotionRecordList {
     private ArrayList<EmotionRecord> emotionRecords;
-    //private ArrayList<Integer> emotionRecordCounts;
-    /* (a, b, c, d, e, f) => a=love count, b=joy count, c=surprise count, d=anger count,
-                             e = sadness count, f = fear count */
     private int loveCount;
     private int joyCount;
     private int surpriseCount;
@@ -65,7 +62,7 @@ public class EmotionRecordList {
     public void sortRecords(){
         Collections.sort(this.emotionRecords);
     }
-    public void removeRecord(EmotionRecord record){
+    public void removeRecord(EmotionRecord record) throws RecordNotInListException{
         if(this.containsRecord(record)){
             String recordType = record.getClass().getSimpleName();
             emotionRecords.remove(record);
@@ -89,13 +86,12 @@ public class EmotionRecordList {
                 fearCount--;
             }
             else{
-                //Theoretically, this exception should never be thrown
-                //throw new RecordTypeNotValidException();
+                //Should never get here
             }
 
         }
         else{
-            //throw new RecordNotInListException();
+            throw new RecordNotInListException();
         }
     }
     public void addRecord(EmotionRecord record){
@@ -137,7 +133,7 @@ public class EmotionRecordList {
 
         }
         else{
-            //throw new RecordTypeNotValidException();
+            //Should never get here
         }
     }
 }
