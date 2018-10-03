@@ -28,15 +28,20 @@ import android.view.View;
 import android.widget.Toast;
 
 
+
 public class MainActivity extends AppCompatActivity {
     EmotionRecordListController listController;
+    EmotionRecordListManager listManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listController = new EmotionRecordListController();
+        listManager = new EmotionRecordListManager();
+        EmotionRecordListManager.loadFile(this);
     }
+
 
     public void viewLog(View v){
         //Launches the EmotionRecordListActivity to see past emotional records
@@ -48,37 +53,44 @@ public class MainActivity extends AppCompatActivity {
     //These all add an emotion record of their respective classes
     public void addNewLove(View v){
         EmotionRecord newLove = new LoveRecord();
-        listController.addRecord(newLove);
+        EmotionRecordListController.addRecord(newLove);
         Toast.makeText(this, "Love emotion saved!", Toast.LENGTH_SHORT).show();
+        EmotionRecordListManager.saveFile(this);
     }
 
     public void addNewJoy(View v){
         EmotionRecord newJoy = new JoyRecord();
-        listController.addRecord(newJoy);
+        EmotionRecordListController.addRecord(newJoy);
         Toast.makeText(this, "Joy emotion saved!", Toast.LENGTH_SHORT).show();
+        EmotionRecordListManager.saveFile(this);
     }
 
     public void addNewSurprise(View v){
         EmotionRecord newSurprise = new SurpriseRecord();
-        listController.addRecord(newSurprise);
+        EmotionRecordListController.addRecord(newSurprise);
         Toast.makeText(this, "Surprise emotion saved!", Toast.LENGTH_SHORT).show();
+        EmotionRecordListManager.saveFile(this);
     }
 
     public void addNewAnger(View v){
         EmotionRecord newAnger = new AngerRecord();
-        listController.addRecord(newAnger);
+        EmotionRecordListController.addRecord(newAnger);
         Toast.makeText(this, "Anger emotion saved!", Toast.LENGTH_SHORT).show();
+        EmotionRecordListManager.saveFile(this);
     }
 
     public void addNewSadness(View v){
         EmotionRecord newSadness = new SadnessRecord();
-        listController.addRecord(newSadness);
+        EmotionRecordListController.addRecord(newSadness);
         Toast.makeText(this, "Sadness emotion saved!", Toast.LENGTH_SHORT).show();
+        EmotionRecordListManager.saveFile(this);
     }
 
     public void addNewFear(View v){
         EmotionRecord newFear = new FearRecord();
-        listController.addRecord(newFear);
+        EmotionRecordListController.addRecord(newFear);
         Toast.makeText(this, "Fear emotion saved!", Toast.LENGTH_SHORT).show();
+        EmotionRecordListManager.saveFile(this);
     }
+
 }

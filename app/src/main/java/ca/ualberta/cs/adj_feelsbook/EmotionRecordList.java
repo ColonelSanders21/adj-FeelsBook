@@ -67,28 +67,26 @@ public class EmotionRecordList {
             String recordType = record.getClass().getSimpleName();
             emotionRecords.remove(record);
             this.sortRecords();
-            if(recordType.equals("LoveRecord")){
-                loveCount--;
+            switch(recordType) {
+                case "LoveRecord":
+                    loveCount--;
+                    break;
+                case "JoyRecord":
+                    joyCount--;
+                    break;
+                case "SurpriseRecord":
+                    surpriseCount--;
+                    break;
+                case "AngerRecord":
+                    angerCount--;
+                    break;
+                case "SadnessRecord":
+                    sadnessCount--;
+                    break;
+                case "FearRecord":
+                    fearCount--;
+                    break;
             }
-            else if(recordType.equals("JoyRecord")){
-                joyCount--;
-            }
-            else if(recordType.equals("SurpriseRecord")){
-                surpriseCount--;
-            }
-            else if(recordType.equals("AngerRecord")){
-                angerCount--;
-            }
-            else if(recordType.equals("SadnessRecord")){
-                sadnessCount--;
-            }
-            else if(recordType.equals("FearRecord")){
-                fearCount--;
-            }
-            else{
-                //Should never get here
-            }
-
         }
         else{
             throw new RecordNotInListException();
@@ -96,44 +94,27 @@ public class EmotionRecordList {
     }
     public void addRecord(EmotionRecord record){
         String recordType = record.getClass().getSimpleName();
-        if(recordType.equals("LoveRecord")){
-            loveCount++;
-            emotionRecords.add(record);
-            this.sortRecords();
-
+        switch(recordType) {
+            case "LoveRecord":
+                loveCount++;
+                break;
+            case "JoyRecord":
+                joyCount++;
+                break;
+            case "SurpriseRecord":
+                surpriseCount++;
+                break;
+            case "AngerRecord":
+                angerCount++;
+                break;
+            case "SadnessRecord":
+                sadnessCount++;
+                break;
+            case "FearRecord":
+                fearCount++;
+                break;
         }
-        else if(recordType.equals("JoyRecord")){
-            joyCount++;
-            emotionRecords.add(record);
-            this.sortRecords();
-
-        }
-        else if(recordType.equals("SurpriseRecord")){
-            surpriseCount++;
-            emotionRecords.add(record);
-            this.sortRecords();
-
-        }
-        else if(recordType.equals("AngerRecord")){
-            angerCount++;
-            emotionRecords.add(record);
-            this.sortRecords();
-
-        }
-        else if(recordType.equals("SadnessRecord")){
-            sadnessCount++;
-            emotionRecords.add(record);
-            this.sortRecords();
-
-        }
-        else if(recordType.equals("FearRecord")){
-            fearCount++;
-            emotionRecords.add(record);
-            this.sortRecords();
-
-        }
-        else{
-            //Should never get here
-        }
+        emotionRecords.add(record);
+        this.sortRecords();
     }
 }

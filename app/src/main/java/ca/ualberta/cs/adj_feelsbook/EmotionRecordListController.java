@@ -12,10 +12,13 @@ public class EmotionRecordListController {
         }
         return emotionRecords;
     }
+    static public void setEmotionRecordList(EmotionRecordList newList){
+        emotionRecords = newList;
+    }
     static public void sortRecords(){ //Static again, for the same purpose
         emotionRecords.sortRecords();
     }
-    public void addRecord(EmotionRecord emotionRecord){
+    static public void addRecord(EmotionRecord emotionRecord){
         getEmotionRecordList().addRecord(emotionRecord);
     }
     public int getSize(){

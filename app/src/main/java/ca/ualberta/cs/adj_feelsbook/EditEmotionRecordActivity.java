@@ -138,6 +138,7 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
             emotionRecord.setDate(stagedDate);
         }
         EmotionRecordListController.sortRecords();
+        EmotionRecordListManager.saveFile(this);
         finish();
     }
     public void deleteRecord(View v){
@@ -146,6 +147,7 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
         }catch (RecordNotInListException e){
             Toast.makeText(this, "Error: Record not in list.", Toast.LENGTH_SHORT).show();
         }
+        EmotionRecordListManager.saveFile(this);
         finish();
     }
     public void cancelEdit(View v){

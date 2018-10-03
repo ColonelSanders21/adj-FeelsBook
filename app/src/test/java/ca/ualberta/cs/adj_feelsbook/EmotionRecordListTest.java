@@ -19,7 +19,7 @@ public class EmotionRecordListTest {
         assertTrue(recordList.getLoveCount() == 1);
         assertTrue(recordList.getAngerCount() == 0);
 
-        recordList.removeRecord(love1);
+        //recordList.removeRecord(love1);
         assertTrue(recordList.getLoveCount() == 0);
         assertTrue(recordList.getSize() == 0);
         assertFalse(recordList.containsRecord(love1));
@@ -47,7 +47,7 @@ public class EmotionRecordListTest {
         AngerRecord angry1 = new AngerRecord();
         recordList.addRecord(angry1);
         assertTrue(recordList.getRecord(1) == angry1);
-        recordList.removeRecord(love2);
+        //recordList.removeRecord(love2);
         assertTrue(recordList.getRecord(1) == love1);
 
     }
