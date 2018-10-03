@@ -11,7 +11,7 @@ public class LoveRecord extends EmotionRecord {
     @Override
     public String toString(){
         //Returns string that looks like 😍 | YYYY-MM-DDTHH:MM:SS
-        return "\uD83D\uDE0D | " +this.isoFormat.format(this.date);
+        return this.emoji + " Love | " +this.isoFormat.format(this.date)+ "\n" +this.comment;
     }
     public String getEmoji(){
         return this.emoji;

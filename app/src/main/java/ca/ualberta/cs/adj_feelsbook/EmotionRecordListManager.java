@@ -24,7 +24,7 @@ public class EmotionRecordListManager {
         try {
             //First three lines based off of lonelyTwitter by Joshua Charles Campbell and Cody
             //Rosevear https://github.com/Rosevear/lonelyTwitter
-            FileInputStream fis = context.openFileInput("file.sav");
+            FileInputStream fis = context.openFileInput("feelsbook.sav");
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader reader = new BufferedReader(isr);
 
@@ -47,7 +47,7 @@ public class EmotionRecordListManager {
         try {
             //First three lines based off of lonelyTwitter by Joshua Charles Campbell and Cody
             //Rosevear https://github.com/Rosevear/lonelyTwitter
-            FileOutputStream fos = context.openFileOutput("file.sav", 0);
+            FileOutputStream fos = context.openFileOutput("feelsbook.sav", 0);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
             BufferedWriter writer = new BufferedWriter(osw);
 

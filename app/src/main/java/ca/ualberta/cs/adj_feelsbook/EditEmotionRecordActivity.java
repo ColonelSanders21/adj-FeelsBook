@@ -1,5 +1,6 @@
 package ca.ualberta.cs.adj_feelsbook;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -120,6 +121,7 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
             }
         };
         TimePickerDialog dialog = new TimePickerDialog(EditEmotionRecordActivity.this,
+                android.R.style.Theme_DeviceDefault_Light_Dialog_Alert,
                 timeSetListener, hour, minute,
                 DateFormat.is24HourFormat(EditEmotionRecordActivity.this));
         dialog.show();

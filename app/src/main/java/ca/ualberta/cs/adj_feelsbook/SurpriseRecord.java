@@ -11,7 +11,7 @@ public class SurpriseRecord extends EmotionRecord {
     @Override
     public String toString(){
         //Returns string that looks like 😮 | YYYY-MM-DDTHH:MM:SS
-        return "\uD83D\uDE2E | " + this.isoFormat.format(this.date);
+        return this.emoji + " Surprise | " +this.isoFormat.format(this.date)+ "\n" +this.comment;
     }
 
     public String getEmoji(){

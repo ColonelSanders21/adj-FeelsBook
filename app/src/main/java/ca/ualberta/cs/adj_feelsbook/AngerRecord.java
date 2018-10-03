@@ -11,7 +11,7 @@ public class AngerRecord extends EmotionRecord {
     @Override
     public String toString(){
         //Returns string that looks like 😠 | YYYY-MM-DDTHH:MM:SS
-        return "\uD83D\uDE20 | " + this.isoFormat.format(this.date);
+        return this.emoji + " Anger | " +this.isoFormat.format(this.date)+ "\n" +this.comment;
     }
     public String getEmoji(){
         return this.emoji;
