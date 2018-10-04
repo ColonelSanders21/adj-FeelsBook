@@ -54,6 +54,7 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int recordIndex = intent.getExtras().getInt("index");
         emotionRecord = recordList.getRecord(recordIndex);
+        stagedDate = emotionRecord.getDate();
 
         //These set the textviews to show the current values of the emotion record
         dateTextView.setText(dateFormat.format(emotionRecord.getDate()));
@@ -66,7 +67,7 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
     public void openDatePicker(View v){
         //Based on tutorial https://www.youtube.com/watch?v=hwe1abDO2Ag by Mitch Tabian
         Calendar calendar = Calendar.getInstance();
-        Date oldDate = emotionRecord.getDate();
+        Date oldDate = stagedDate;
         calendar.setTime(oldDate);
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
@@ -98,7 +99,7 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
     public void openTimePicker(View v){
         //Based on tutorial https://www.youtube.com/watch?v=hwe1abDO2Ag by Mitch Tabian
         Calendar calendar = Calendar.getInstance();
-        Date oldDate = emotionRecord.getDate();
+        Date oldDate = stagedDate;
         calendar.setTime(oldDate);
         //The following three are final -- we want date to carry over from what was set before
         final int year = calendar.get(Calendar.YEAR);
@@ -135,10 +136,8 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
         }catch (CommentTooLongException e){
             Toast.makeText(this, "Comment is too long! Comment not saved.", Toast.LENGTH_SHORT).show();
         }
-
-        if(stagedDate != null){ //Check for if user did not set a new date
-            emotionRecord.setDate(stagedDate);
-        }
+        
+        emotionRecord.setDate(stagedDate);
         EmotionRecordListController.sortRecords();
         EmotionRecordListManager.saveFile(this);
         finish();
