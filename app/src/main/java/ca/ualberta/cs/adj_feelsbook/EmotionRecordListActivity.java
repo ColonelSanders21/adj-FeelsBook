@@ -8,11 +8,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
 
-//Activity that launches when the user
+//Activity that launches the list of previous emotion records
 public class EmotionRecordListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +35,17 @@ public class EmotionRecordListActivity extends AppCompatActivity {
         final ArrayAdapter<EmotionRecord> emotionAdapter = new ArrayAdapter<EmotionRecord>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(emotionAdapter);
 
-        //Updates
-        updateLoveCount();
-        updateJoyCount();
-        updateSurpriseCount();
-        updateAngerCount();
-        updateSadnessCount();
-        updateFearCount();
+        //Updates counters
 
+        setCounters();
         //Selecting item from list
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(EmotionRecordListActivity.this, EditEmotionRecordActivity.class);
 
-                //Credit to Paresh Mayani and Peter Mortensen from StackOverflow for recommending
-                //this function: https://stackoverflow.com/a/7074143
+                // Credit to Paresh Mayani and Peter Mortensen from StackOverflow for recommending
+                // this function: https://stackoverflow.com/a/7074143
                 intent.putExtra("index", position );
                 startActivity(intent);
                 emotionAdapter.notifyDataSetChanged();
@@ -57,45 +55,36 @@ public class EmotionRecordListActivity extends AppCompatActivity {
 
 
     }
-
-    //These each get a template string from R.string and add the current number of emotions to their TextViews
-    public void updateLoveCount(){
+    public void setCounters(){
+        //Set love counter
         TextView loveCountTextView = findViewById(R.id.loveCountTextView);
-        int loveCount = EmotionRecordListController.getEmotionRecordList().getLoveCount();
-        String newLoveCount = getString(R.string.love_count) + loveCount;
-        loveCountTextView.setText(newLoveCount);
-    }
-    public void updateJoyCount(){
+        String s = getString(R.string.love_count) + EmotionRecordListController.getLoveCount();
+        loveCountTextView.setText(s);
+
+        //Set joy counter
         TextView joyCountTextView = findViewById(R.id.joyCountTextView);
-        int joyCount = EmotionRecordListController.getEmotionRecordList().getJoyCount();
-        String newJoyCount = getString(R.string.joy_count) + joyCount;
-        joyCountTextView.setText(newJoyCount);
-    }
-    public void updateSurpriseCount(){
+        s = getString(R.string.joy_count) + EmotionRecordListController.getJoyCount();
+        joyCountTextView.setText(s);
+
+        //Set surprise counter
         TextView surpriseCountTextView = findViewById(R.id.surpriseCountTextView);
-        int surpriseCount = EmotionRecordListController.getEmotionRecordList().getSurpriseCount();
-        String newSadnessCount = getString(R.string.surprise_count) + surpriseCount;
-        surpriseCountTextView.setText(newSadnessCount);
-    }
+        s = getString(R.string.surprise_count) + EmotionRecordListController.getSurpriseCount();
+        surpriseCountTextView.setText(s);
 
-    public void updateAngerCount(){
+        //Set anger counter
         TextView angerCountTextView = findViewById(R.id.angerCountTextView);
-        int angerCount = EmotionRecordListController.getEmotionRecordList().getAngerCount();
-        String newAngerCount = getString(R.string.anger_count) + angerCount;
-        angerCountTextView.setText(newAngerCount);
-    }
+        s = getString(R.string.anger_count)+ EmotionRecordListController.getAngerCount();
+        angerCountTextView.setText(s);
 
-    public void updateSadnessCount(){
+        //Set sadness counter
         TextView sadnessCountTextView = findViewById(R.id.sadnessCountTextView);
-        int sadnessCount = EmotionRecordListController.getEmotionRecordList().getSadnessCount();
-        String newSadnessCount = getString(R.string.sadness_count) + sadnessCount;
-        sadnessCountTextView.setText(newSadnessCount);
-    }
+        s = getString(R.string.sadness_count) + EmotionRecordListController.getSadnessCount();
+        sadnessCountTextView.setText(s);
 
-    public void updateFearCount(){
+        //Set fear counter
         TextView fearCountTextView = findViewById(R.id.fearCountTextView);
-        int fearCount = EmotionRecordListController.getEmotionRecordList().getFearCount();
-        String newFearCount = getString(R.string.fear_count) + fearCount;
-        fearCountTextView.setText(newFearCount);
+        s = getString(R.string.fear_count)+ EmotionRecordListController.getFearCount();
+        fearCountTextView.setText(s);
+
     }
 }

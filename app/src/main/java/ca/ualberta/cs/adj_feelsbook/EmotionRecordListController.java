@@ -21,10 +21,38 @@ public class EmotionRecordListController {
     static public void addRecord(EmotionRecord emotionRecord){
         getEmotionRecordList().addRecord(emotionRecord);
     }
-    public int getSize(){
+    static public int getSize(){
         return getEmotionRecordList().getSize();
     }
 
+    static public int countRecord(EmotionRecord recordToCount){
+        int count = 0;
+        for(int i= 0; i < getSize(); i++){
+            if(emotionRecords.getRecord(i).getClass() == recordToCount.getClass()){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    static public int getLoveCount(){
+        return countRecord(new LoveRecord());
+    }
+    static public int getJoyCount(){
+        return countRecord(new JoyRecord());
+    }
+    static public int getSurpriseCount(){
+        return countRecord(new SurpriseRecord());
+    }
+    static public int getAngerCount(){
+        return countRecord(new AngerRecord());
+    }
+    static public int getSadnessCount(){
+        return countRecord(new SadnessRecord());
+    }
+    static public int getFearCount(){
+        return countRecord(new FearRecord());
+    }
     //For debug and testing
     public EmotionRecord getRecord(int index){
         return getEmotionRecordList().getRecord(index);

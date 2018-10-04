@@ -108,7 +108,6 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         int second = calendar.get(Calendar.SECOND);
-
         timeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -136,7 +135,7 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
         }catch (CommentTooLongException e){
             Toast.makeText(this, "Comment is too long! Comment not saved.", Toast.LENGTH_SHORT).show();
         }
-        
+
         emotionRecord.setDate(stagedDate);
         EmotionRecordListController.sortRecords();
         EmotionRecordListManager.saveFile(this);
