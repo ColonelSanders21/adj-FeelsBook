@@ -1,11 +1,12 @@
 package ca.ualberta.cs.adj_feelsbook;
 
+//Record of joy
 public class JoyRecord extends EmotionRecord {
     protected String emoji;
     JoyRecord(){
 
         super();
-        emoji = "\uD83D\uDE0A";
+        emoji = "\uD83D\uDE0A"; //😊
     }
 
     @Override

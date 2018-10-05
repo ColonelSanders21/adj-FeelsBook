@@ -1,4 +1,5 @@
 package ca.ualberta.cs.adj_feelsbook;
 
-public class CommentTooLongException extends Exception{
+//Throws when user tries to submit a comment longer than 100 characters
+public class CommentTooLongException extends Exception {
 }

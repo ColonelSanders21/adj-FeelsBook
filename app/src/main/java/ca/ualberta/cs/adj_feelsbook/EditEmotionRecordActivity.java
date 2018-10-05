@@ -32,28 +32,31 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
     TextView dateTextView;
     TextView commentTextView;
     TextView emotionIconTextView;
-    private DatePickerDialog.OnDateSetListener dateSetListener;
-    private TimePickerDialog.OnTimeSetListener timeSetListener;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd'T'hh:mm:ss");
+    DatePickerDialog.OnDateSetListener dateSetListener;
+    TimePickerDialog.OnTimeSetListener timeSetListener;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd'T'hh:mm:ss");
 
-    //Saves a new date for if the user decides to save it -- prevents parsing errors
+    //This variable stores a date object for when the user decides whether to save changes
     private Date stagedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_emotion);
     }
-    protected void onResume(){
-        super.onResume();
-        dateTextView = (TextView) findViewById(R.id.dateTextView);
-        commentTextView = (TextView) findViewById(R.id.commentTextView);
-        emotionIconTextView = (TextView) findViewById(R.id.emotionIconTextView);
 
+    protected void onResume() {
+        super.onResume();
+        dateTextView = findViewById(R.id.dateTextView);
+        commentTextView = findViewById(R.id.commentTextView);
+        emotionIconTextView = findViewById(R.id.emotionIconTextView);
+
+        //We receive the index from the list of the record the user wants to edit
         Intent intent = getIntent();
         int recordIndex = intent.getExtras().getInt("index");
         emotionRecord = recordList.getRecord(recordIndex);
+
+        //Setting stagedDate to be the original date of the record
         stagedDate = emotionRecord.getDate();
 
         //These set the textviews to show the current values of the emotion record
@@ -64,7 +67,7 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
         emotionIconTextView.setText(emotionRecord.getEmoji());
     }
 
-    public void openDatePicker(View v){
+    public void openDatePicker(View v) {
         //Based on tutorial https://www.youtube.com/watch?v=hwe1abDO2Ag by Mitch Tabian
         Calendar calendar = Calendar.getInstance();
         Date oldDate = stagedDate;
@@ -91,12 +94,13 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
         };
         DatePickerDialog dialog = new DatePickerDialog(EditEmotionRecordActivity.this,
                 android.R.style.Theme_DeviceDefault_Light_Dialog_Alert, dateSetListener,
-                year, month, day );
+                year, month, day);
         dialog.show();
 
 
     }
-    public void openTimePicker(View v){
+
+    public void openTimePicker(View v) {
         //Based on tutorial https://www.youtube.com/watch?v=hwe1abDO2Ag by Mitch Tabian
         Calendar calendar = Calendar.getInstance();
         Date oldDate = stagedDate;
@@ -107,7 +111,6 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
-        int second = calendar.get(Calendar.SECOND);
         timeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -128,12 +131,14 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
 
 
     }
-    public void saveEdit(View v){
+
+    public void saveEdit(View v) {
         String newComment = commentTextView.getText().toString();
         try {
             emotionRecord.setComment(newComment);
-        }catch (CommentTooLongException e){
-            Toast.makeText(this, "Comment is too long! Comment not saved.", Toast.LENGTH_SHORT).show();
+        } catch (CommentTooLongException e) {
+            Toast.makeText(this, "Comment is too long! Comment not saved.",
+                    Toast.LENGTH_SHORT).show();
         }
 
         emotionRecord.setDate(stagedDate);
@@ -141,16 +146,18 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
         EmotionRecordListManager.saveFile(this);
         finish();
     }
-    public void deleteRecord(View v){
-        try{
+
+    public void deleteRecord(View v) {
+        try {
             recordList.removeRecord(emotionRecord);
-        }catch (RecordNotInListException e){
+        } catch (RecordNotInListException e) {
             Toast.makeText(this, "Error: Record not in list.", Toast.LENGTH_SHORT).show();
         }
         EmotionRecordListManager.saveFile(this);
         finish();
     }
-    public void cancelEdit(View v){
+
+    public void cancelEdit(View v) {
         finish();
     }
 }

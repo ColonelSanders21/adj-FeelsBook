@@ -16,11 +16,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-//Saves and loads the EmotionRecordList as necessary (methods called when changes are made)
+//Saves and loads the EmotionRecordList as necessary to file (methods called when changes are made)
 public class EmotionRecordListManager {
 
-    public EmotionRecordListManager(){}
-    static public void loadFile(Context context){
+    public EmotionRecordListManager() {
+    }
+
+    static public void loadFile(Context context) {
         try {
             //First three lines based off of lonelyTwitter by Joshua Charles Campbell and Cody
             //Rosevear https://github.com/Rosevear/lonelyTwitter
@@ -43,7 +45,7 @@ public class EmotionRecordListManager {
         }
     }
 
-    static public void saveFile(Context context){
+    static public void saveFile(Context context) {
         try {
             //First three lines based off of lonelyTwitter by Joshua Charles Campbell and Cody
             //Rosevear https://github.com/Rosevear/lonelyTwitter

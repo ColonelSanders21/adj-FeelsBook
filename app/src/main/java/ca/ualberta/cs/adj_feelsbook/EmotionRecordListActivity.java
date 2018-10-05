@@ -25,7 +25,7 @@ public class EmotionRecordListActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
 
         //Based on StudentPicker tutorial by Abram Hindle: https://www.youtube.com/watch?v=7zKCuqScaRE&list=PL240uJOh_Vb4PtMZ0f7N8ACYkCLv0673O&index=6
@@ -34,8 +34,6 @@ public class EmotionRecordListActivity extends AppCompatActivity {
         ArrayList<EmotionRecord> list = new ArrayList<EmotionRecord>(emotionRecordCollection);
         final ArrayAdapter<EmotionRecord> emotionAdapter = new ArrayAdapter<EmotionRecord>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(emotionAdapter);
-
-        //Updates counters
 
         setCounters();
         //Selecting item from list
@@ -46,16 +44,17 @@ public class EmotionRecordListActivity extends AppCompatActivity {
 
                 // Credit to Paresh Mayani and Peter Mortensen from StackOverflow for recommending
                 // this function: https://stackoverflow.com/a/7074143
-                intent.putExtra("index", position );
+                // Passing on index for the edit activity so it knows what needs editing
+                intent.putExtra("index", position);
                 startActivity(intent);
                 emotionAdapter.notifyDataSetChanged();
             }
         });
 
 
-
     }
-    public void setCounters(){
+
+    public void setCounters() {
         //Set love counter
         TextView loveCountTextView = findViewById(R.id.loveCountTextView);
         String s = getString(R.string.love_count) + EmotionRecordListController.getLoveCount();
@@ -73,7 +72,7 @@ public class EmotionRecordListActivity extends AppCompatActivity {
 
         //Set anger counter
         TextView angerCountTextView = findViewById(R.id.angerCountTextView);
-        s = getString(R.string.anger_count)+ EmotionRecordListController.getAngerCount();
+        s = getString(R.string.anger_count) + EmotionRecordListController.getAngerCount();
         angerCountTextView.setText(s);
 
         //Set sadness counter
@@ -83,7 +82,7 @@ public class EmotionRecordListActivity extends AppCompatActivity {
 
         //Set fear counter
         TextView fearCountTextView = findViewById(R.id.fearCountTextView);
-        s = getString(R.string.fear_count)+ EmotionRecordListController.getFearCount();
+        s = getString(R.string.fear_count) + EmotionRecordListController.getFearCount();
         fearCountTextView.setText(s);
 
     }

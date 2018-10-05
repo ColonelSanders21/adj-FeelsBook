@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,8 +17,8 @@ import java.util.Date;
 
 
 //This creates custom serialization and deserialization for gson to use, since you can't deserialize
-//abstract classes (ie. it tries to make an EmotionRecord, which can't be initialized)
-public class EmotionRecordTypeAdapter implements JsonSerializer<EmotionRecord>, JsonDeserializer<EmotionRecord>{
+//abstract classes (ie. it tries to make an EmotionRecord, which can't be made into an object)
+public class EmotionRecordTypeAdapter implements JsonSerializer<EmotionRecord>, JsonDeserializer<EmotionRecord> {
     @Override
     public JsonElement serialize(EmotionRecord emotionRecord, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject jsonObject = new JsonObject();
@@ -25,11 +26,10 @@ public class EmotionRecordTypeAdapter implements JsonSerializer<EmotionRecord>, 
         //Convert date to iso since we use this format a few times
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
         String date = dateFormat.format(emotionRecord.getDate());
-        //jsonObject.addProperty("emotion", emotionRecord.getClass().getSimpleName());
         jsonObject.addProperty("emoji", emotionRecord.getEmoji());
         jsonObject.addProperty("comment", emotionRecord.getComment());
         jsonObject.addProperty("date", date);
-        Log.d("cmput","Date saved was" +date);
+        Log.d("cmput", "Date saved was" + date);
         return jsonObject;
     }
 
@@ -39,7 +39,7 @@ public class EmotionRecordTypeAdapter implements JsonSerializer<EmotionRecord>, 
         JsonObject jsonObject = json.getAsJsonObject();
         String emoji = jsonObject.get("emoji").getAsString();
         EmotionRecord record;
-        switch(emoji){
+        switch (emoji) {
             case "\uD83D\uDE0D":
                 //😍 Love
                 record = new LoveRecord();
@@ -71,17 +71,17 @@ public class EmotionRecordTypeAdapter implements JsonSerializer<EmotionRecord>, 
         }
         try {
             record.setComment(jsonObject.get("comment").getAsString());
-        }catch (CommentTooLongException e){
+        } catch (CommentTooLongException e) {
             //This should never trip, since we are resubmitting an already approved comment
             e.printStackTrace();
         }
         Date date;
-        try{
+        try {
             date = dateFormat.parse(jsonObject.get("date").getAsString());
-        }catch(ParseException e){
-            //We are resubitting an already approved date, so this shouldn't trip
+        } catch (ParseException e) {
+            //We are resubmitting an already approved date, so this shouldn't trip
             date = new Date();
-            Log.d("cmput","Date was not parsed properly");
+            Log.d("cmput", "Date was not parsed properly");
         }
         record.setDate(date);
 

@@ -1,62 +1,77 @@
 package ca.ualberta.cs.adj_feelsbook;
 
+//Controller for the EmotionRecordList used across all activities
 public class EmotionRecordListController {
 
     //Based on Student Picker tutorial and code by Abram Hindle: https://www.youtube.com/watch?v=uLnoI7mbuEo
 
     private static EmotionRecordList emotionRecords = null; //Static so that we can continue to access the same record list
-    static public EmotionRecordList getEmotionRecordList(){
 
-        if(emotionRecords == null){
+    static public EmotionRecordList getEmotionRecordList() {
+
+        if (emotionRecords == null) {
             emotionRecords = new EmotionRecordList();
         }
         return emotionRecords;
     }
-    static public void setEmotionRecordList(EmotionRecordList newList){
+
+    static public void setEmotionRecordList(EmotionRecordList newList) {
         emotionRecords = newList;
     }
-    static public void sortRecords(){ //Static again, for the same purpose
+
+    static public void sortRecords() { //Static again, for the same purpose
         emotionRecords.sortRecords();
     }
-    static public void addRecord(EmotionRecord emotionRecord){
+
+    static public void addRecord(EmotionRecord emotionRecord) {
         getEmotionRecordList().addRecord(emotionRecord);
     }
-    static public int getSize(){
+
+    static public int getSize() {
         return getEmotionRecordList().getSize();
     }
 
-    static public int countRecord(EmotionRecord recordToCount){
+    static public int countRecord(EmotionRecord recordToCount) {
         int count = 0;
-        for(int i= 0; i < getSize(); i++){
-            if(emotionRecords.getRecord(i).getClass() == recordToCount.getClass()){
+        for (int i = 0; i < getSize(); i++) {
+            if (emotionRecords.getRecord(i).getClass() == recordToCount.getClass()) {
                 count++;
             }
         }
         return count;
     }
 
-    static public int getLoveCount(){
+    static public int getLoveCount() {
         return countRecord(new LoveRecord());
     }
-    static public int getJoyCount(){
+
+    static public int getJoyCount() {
         return countRecord(new JoyRecord());
     }
-    static public int getSurpriseCount(){
+
+    static public int getSurpriseCount() {
         return countRecord(new SurpriseRecord());
     }
-    static public int getAngerCount(){
+
+    static public int getAngerCount() {
         return countRecord(new AngerRecord());
     }
-    static public int getSadnessCount(){
+
+    static public int getSadnessCount() {
         return countRecord(new SadnessRecord());
     }
-    static public int getFearCount(){
+
+    static public int getFearCount() {
         return countRecord(new FearRecord());
     }
+
     //For debug and testing
-    public EmotionRecord getRecord(int index){
+    public EmotionRecord getRecord(int index) {
         return getEmotionRecordList().getRecord(index);
     }
-    public int getIndex(EmotionRecord record){ return getEmotionRecordList().getEmotionRecords().indexOf(record);}
+
+    public int getIndex(EmotionRecord record) {
+        return getEmotionRecordList().getEmotionRecords().indexOf(record);
+    }
 
 }

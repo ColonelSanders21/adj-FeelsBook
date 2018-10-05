@@ -1,19 +1,21 @@
 package ca.ualberta.cs.adj_feelsbook;
 
+//Record of sadness
 public class SadnessRecord extends EmotionRecord {
     protected String emoji;
-    SadnessRecord(){
+
+    SadnessRecord() {
         super();
-        emoji = "\uD83D\uDE22";
+        emoji = "\uD83D\uDE22"; //😢
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         //Returns string that looks like 😢 | YYYY-MM-DDTHH:MM:SS
-        return this.emoji + " Sadness | " +this.isoFormat.format(this.date)+ "\n" +this.comment;
+        return this.emoji + " Sadness | " + this.isoFormat.format(this.date) + "\n" + this.comment;
     }
 
-    public String getEmoji(){
+    public String getEmoji() {
         return this.emoji;
     }
 }

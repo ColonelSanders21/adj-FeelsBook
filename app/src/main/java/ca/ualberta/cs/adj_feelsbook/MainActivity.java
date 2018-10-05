@@ -28,8 +28,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-
+//Main activity, presents the user with emotions to record and a comment field
 public class MainActivity extends AppCompatActivity {
     EmotionRecordListController listController;
     EmotionRecordListManager listManager;
@@ -42,20 +41,20 @@ public class MainActivity extends AppCompatActivity {
         listController = new EmotionRecordListController();
         listManager = new EmotionRecordListManager();
         EmotionRecordListManager.loadFile(this);
-        commentField= findViewById(R.id.addCommentEditText);
+        commentField = findViewById(R.id.addCommentEditText);
     }
 
-    public void saveComment(EmotionRecord emotionRecord){
-        //Gets text user has inputted into comment editText and sets comment
-        try{
+    public void saveComment(EmotionRecord emotionRecord) {
+        //Gets text user has inputted into comment field and sets comment in record
+        try {
             emotionRecord.setComment(commentField.getText().toString());
-        }catch(CommentTooLongException e){
+        } catch (CommentTooLongException e) {
             Toast.makeText(this, "Comment too long!", Toast.LENGTH_SHORT).show();
         }
         commentField.setText("");
     }
 
-    public void viewLog(View v){
+    public void viewLog(View v) {
         //Launches the EmotionRecordListActivity to see past emotional records
         Intent intent = new Intent(MainActivity.this, EmotionRecordListActivity.class);
         startActivity(intent);
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //These all add an emotion record of their respective classes
-    public void addNewLove(View v){
+    public void addNewLove(View v) {
         EmotionRecord newLove = new LoveRecord();
         EmotionRecordListController.addRecord(newLove);
         Toast.makeText(this, "Love emotion saved!", Toast.LENGTH_SHORT).show();
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         EmotionRecordListManager.saveFile(this);
     }
 
-    public void addNewJoy(View v){
+    public void addNewJoy(View v) {
         EmotionRecord newJoy = new JoyRecord();
         EmotionRecordListController.addRecord(newJoy);
         Toast.makeText(this, "Joy emotion saved!", Toast.LENGTH_SHORT).show();
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         EmotionRecordListManager.saveFile(this);
     }
 
-    public void addNewSurprise(View v){
+    public void addNewSurprise(View v) {
         EmotionRecord newSurprise = new SurpriseRecord();
         EmotionRecordListController.addRecord(newSurprise);
         Toast.makeText(this, "Surprise emotion saved!", Toast.LENGTH_SHORT).show();
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         EmotionRecordListManager.saveFile(this);
     }
 
-    public void addNewAnger(View v){
+    public void addNewAnger(View v) {
         EmotionRecord newAnger = new AngerRecord();
         EmotionRecordListController.addRecord(newAnger);
         Toast.makeText(this, "Anger emotion saved!", Toast.LENGTH_SHORT).show();
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         EmotionRecordListManager.saveFile(this);
     }
 
-    public void addNewSadness(View v){
+    public void addNewSadness(View v) {
         EmotionRecord newSadness = new SadnessRecord();
         EmotionRecordListController.addRecord(newSadness);
         Toast.makeText(this, "Sadness emotion saved!", Toast.LENGTH_SHORT).show();
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         EmotionRecordListManager.saveFile(this);
     }
 
-    public void addNewFear(View v){
+    public void addNewFear(View v) {
         EmotionRecord newFear = new FearRecord();
         EmotionRecordListController.addRecord(newFear);
         Toast.makeText(this, "Fear emotion saved!", Toast.LENGTH_SHORT).show();
