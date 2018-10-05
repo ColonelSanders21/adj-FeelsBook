@@ -24,7 +24,7 @@ public class EmotionRecordTypeAdapter implements JsonSerializer<EmotionRecord>, 
         JsonObject jsonObject = new JsonObject();
 
         //Convert date to iso since we use this format a few times
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         String date = dateFormat.format(emotionRecord.getDate());
         jsonObject.addProperty("emoji", emotionRecord.getEmoji());
         jsonObject.addProperty("comment", emotionRecord.getComment());
@@ -35,7 +35,7 @@ public class EmotionRecordTypeAdapter implements JsonSerializer<EmotionRecord>, 
 
     @Override
     public EmotionRecord deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         JsonObject jsonObject = json.getAsJsonObject();
         String emoji = jsonObject.get("emoji").getAsString();
         EmotionRecord record;

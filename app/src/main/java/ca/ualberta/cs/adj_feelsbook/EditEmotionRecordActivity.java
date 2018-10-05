@@ -34,7 +34,7 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
     TextView emotionIconTextView;
     DatePickerDialog.OnDateSetListener dateSetListener;
     TimePickerDialog.OnTimeSetListener timeSetListener;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd'T'hh:mm:ss");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss");
 
     //This variable stores a date object for when the user decides whether to save changes
     private Date stagedDate;
@@ -126,7 +126,7 @@ public class EditEmotionRecordActivity extends AppCompatActivity {
         TimePickerDialog dialog = new TimePickerDialog(EditEmotionRecordActivity.this,
                 android.R.style.Theme_DeviceDefault_Light_Dialog_Alert,
                 timeSetListener, hour, minute,
-                DateFormat.is24HourFormat(EditEmotionRecordActivity.this));
+                true);
         dialog.show();
 
 

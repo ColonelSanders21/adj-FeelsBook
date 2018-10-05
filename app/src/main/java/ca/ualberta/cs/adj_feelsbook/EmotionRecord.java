@@ -9,7 +9,7 @@ public abstract class EmotionRecord implements Comparable<EmotionRecord> {
 
     protected Date date;
     protected String comment;
-    protected DateFormat isoFormat = new SimpleDateFormat("YYYY-MM-dd'T'hh:mm:ss");
+    protected DateFormat isoFormat = new SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss");
 
     EmotionRecord() {
         //No arguments required for constructor -- comment can be set by user after instantiation
